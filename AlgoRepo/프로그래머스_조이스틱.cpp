@@ -17,21 +17,8 @@ int solution(string name) {
     {
         if(name[index] != 'A' && name[index] != saveAlphabet[index])
         {
-            if('N' - name[index] > 0)
-            {
-                answer += name[index] - 'A';
-                saveAlphabet[index] = name[index];
-            }
-            else if('N' - name[index] < 0)
-            {
-                answer += 'Z' - name[index] + 1;
-                saveAlphabet[index] = name[index];
-            }
-            else
-            {
-                answer += 13;
-                saveAlphabet[index] = name[index];
-            }
+            answer += min(name[index] - 'A', 'Z' - name[index] + 1);
+            saveAlphabet[index] = name[index];
         }
         else
         {

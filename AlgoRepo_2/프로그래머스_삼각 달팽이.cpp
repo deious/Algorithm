@@ -11,7 +11,6 @@ vector<int> solution(int n) {
     int num = 1;
     int dir = 0;
     int x = 0, y = 0;
-    check[0][0] = 1;
     
     for(int i = 0; i < n; i++)
     {

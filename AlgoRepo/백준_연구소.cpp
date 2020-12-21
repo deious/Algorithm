@@ -1,7 +1,6 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
-#include <cstring>
 
 using namespace std;
 
@@ -11,7 +10,6 @@ int dy[] = { 1, -1, 0, 0 };
 int n, m, ans = 0;
 int rebo[8][8];
 int tempRebo[8][8];
-bool check[8][8];
 
 queue<pair<int, int>> que;
 
@@ -35,7 +33,6 @@ void wallCheck(int x, int y, int count)
 		{
 			int x = q.front().first;
 			int y = q.front().second;
-			check[x][y] = true;
 			q.pop();
 
 			for (int i = 0; i < 4; i++)
@@ -43,7 +40,7 @@ void wallCheck(int x, int y, int count)
 				int nx = x + dx[i];
 				int ny = y + dy[i];
 
-				if (tempRebo[nx][ny] == 1 || tempRebo[nx][ny] == 2 || check[nx][ny] || nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+				if (tempRebo[nx][ny] == 1 || tempRebo[nx][ny] == 2 || nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
 
 				q.push(make_pair(nx, ny));
 				tempRebo[nx][ny] = 2;
@@ -59,7 +56,6 @@ void wallCheck(int x, int y, int count)
 		}
 
 		ans = max(ans, tempMax);
-		memset(check, false, sizeof(check));
 		return;
 	}
 

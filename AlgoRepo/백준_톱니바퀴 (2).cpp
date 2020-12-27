@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <deque>
-#include <queue>
 #include <cstring>
 
 using namespace std;
@@ -17,76 +16,29 @@ void GearControll(int gear, int rotation)
 
 	int tempLeft = dq[realGear][6], tempRight = dq[realGear][2];
 
-	if (gear == 1)
+	check[realGear] = true;
+
+	if (rotation == 1)
 	{
-		check[realGear] = true;
-
-		if (rotation == 1)
-		{
-			int temp = dq[realGear].back();
-			dq[realGear].pop_back();
-			dq[realGear].push_front(temp);
-		}
-		else if (rotation == -1)
-		{
-			int temp = dq[realGear].front();
-			dq[realGear].pop_front();
-			dq[realGear].push_back(temp);
-		}
-
-		if (tempRight != dq[gear][6])
-		{
-			GearControll(gear + 1, rotation * -1);
-		}
+		int temp = dq[realGear].back();
+		dq[realGear].pop_back();
+		dq[realGear].push_front(temp);
 	}
-	else if (gear == t)
+	else if (rotation == -1)
 	{
-		check[realGear] = true;
-
-		if (rotation == 1)
-		{
-			int temp = dq[realGear].back();
-			dq[realGear].pop_back();
-			dq[realGear].push_front(temp);
-		}
-		else if (rotation == -1)
-		{
-			int temp = dq[realGear].front();
-			dq[realGear].pop_front();
-			dq[realGear].push_back(temp);
-		}
-
-		if (tempLeft != dq[realGear - 1][2])
-		{
-			GearControll(gear - 1, rotation * -1);
-		}
+		int temp = dq[realGear].front();
+		dq[realGear].pop_front();
+		dq[realGear].push_back(temp);
 	}
-	else
+
+	if (gear != 1 && tempLeft != dq[realGear - 1][2])
 	{
-		check[realGear] = true;
+		GearControll(gear - 1, rotation * -1);
+	}
 
-		if (rotation == 1)
-		{
-			int temp = dq[realGear].back();
-			dq[realGear].pop_back();
-			dq[realGear].push_front(temp);
-		}
-		else if (rotation == -1)
-		{
-			int temp = dq[realGear].front();
-			dq[realGear].pop_front();
-			dq[realGear].push_back(temp);
-		}
-
-		if (tempLeft != dq[realGear - 1][2])
-		{
-			GearControll(gear - 1, rotation * -1);
-		}
-
-		if (tempRight != dq[gear][6])
-		{
-			GearControll(gear + 1, rotation * -1);
-		}
+	if (gear != t && tempRight != dq[gear][6])
+	{
+		GearControll(gear + 1, rotation * -1);
 	}
 
 	return;
@@ -95,8 +47,7 @@ void GearControll(int gear, int rotation)
 int main()
 {
 	int k, ans = 0;
-	queue<pair<int, int>> q;
-	
+
 	scanf("%d", &t);
 
 	for (int i = 0; i < t; i++)
@@ -109,18 +60,10 @@ int main()
 
 	scanf("%d", &k);
 
-	for (int i = 0; i < k; i++)
+	while (k--)
 	{
-		int a, b;
-		scanf("%d %d", &a, &b);
-		q.push(make_pair(a, b));
-	}
-
-	while (!q.empty())
-	{
-		int gear = q.front().first;
-		int gearRotation = q.front().second;
-		q.pop();
+		int gear, gearRotation;
+		scanf("%d %d", &gear, &gearRotation);
 
 		GearControll(gear, gearRotation);
 
@@ -129,7 +72,7 @@ int main()
 
 	for (int i = 0; i < t; i++)
 	{
-		if (dq[i][0] == 1) ans ++;
+		if (dq[i][0] == 1) ans++;
 	}
 
 	printf("%d", ans);

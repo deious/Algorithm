@@ -18,7 +18,7 @@ void calculate(int num, int count)
 
 	int tempNum = 0;
 
-	for (int i = 1; i <= 7; i++)
+	for (int i = 1; i < 7; i++)
 	{
 		tempNum = tempNum * 10 + nCount;
 		calculate(num + tempNum, count + i);

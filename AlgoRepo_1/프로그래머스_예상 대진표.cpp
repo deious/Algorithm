@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 int solution(int n, int a, int b)
 {
 	int answer = 0;
@@ -16,6 +12,5 @@ int solution(int n, int a, int b)
 
 		answer++;
 	}
-
 	return answer;
 }

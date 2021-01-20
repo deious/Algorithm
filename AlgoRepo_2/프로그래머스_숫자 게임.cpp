@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 #include <algorithm>
 
@@ -13,17 +12,17 @@ int solution(vector<int> A, vector<int> B) {
 	int aIndex = 0, bIndex = 0;
 	int len = A.size();
 
-	if (A[0] >= B[B.size() - 1]) return answer;
+	if (A[0] >= B[len - 1]) return answer;
 
 	for (int i = 0; i < len; i++)
 	{
 		if (A[aIndex] < B[bIndex])
 		{
 			aIndex++;
-			bIndex++;
 			answer++;
 		}
-		else bIndex++;
+
+		bIndex++;
 	}
 
 	return answer;

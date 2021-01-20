@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 #include <queue>
 
@@ -17,11 +16,12 @@ long long solution(int n, vector<int> works) {
 		int temp = pq.top();
 		pq.pop();
 		temp--;
-		if (temp < 0) temp = 0;
-		pq.push(temp);
+		if (temp > 0) pq.push(temp);
 	}
 
-	for (int i = 0; i < len; i++)
+	int len2 = pq.size();
+
+	for (int i = 0; i < len2; i++)
 	{
 		int temp = pq.top();
 		pq.pop();

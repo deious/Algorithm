@@ -30,8 +30,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 
 	sort(v2.begin(), v2.end(), secondCheck2);
 
-	map<string, int> ::iterator iter = m.begin();
-	for (; iter != m.end(); ++iter) v.push_back(make_pair(iter->first, iter->second));
+	for (auto num : m) v.push_back(make_pair(num.first, num.second));
 
 	sort(v.begin(), v.end(), secondCheck);
 

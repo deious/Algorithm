@@ -34,7 +34,7 @@ int main()
 	queue<pair<int, int>> tailPos;
 	tailPos.push(make_pair(1, 1));
 	char c;
-	
+
 	for (int i = 0; i < K; i++)
 	{
 		cin >> x >> c;
@@ -46,17 +46,9 @@ int main()
 	boardCheck[1][1] = true;
 	while (true)
 	{
-		if (q.empty())
-		{
-			dt = -1;
-			dc = 'x';
-		}
-		else
-		{
-			dt = q.front().first;
-			dc = q.front().second;
-			q.pop();
-		}
+		dt = q.front().first;
+		dc = q.front().second;
+		q.pop();
 
 		while (true)
 		{
@@ -74,7 +66,6 @@ int main()
 			{
 				apple[nx][ny] = false;
 				boardCheck[nx][ny] = true;
-				tailPos.push(make_pair(nx, ny));
 			}
 			else
 			{
@@ -83,24 +74,17 @@ int main()
 				ty = tailPos.front().second;
 				boardCheck[tx][ty] = false;
 				tailPos.pop();
-				tailPos.push(make_pair(nx, ny));
 			}
 
+			tailPos.push(make_pair(nx, ny));
 			x = nx, y = ny;
 
 			if (time == dt)
 			{
 				if (dc == 'L')
-				{
-					if (i == 0)
-						i = 3;
-					else
-						i--;
-				}
+					i += 3;
 				else
-				{
 					i++;
-				}
 				break;
 			}
 		}

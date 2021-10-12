@@ -26,7 +26,6 @@ string ChangeSound(string m, map<string, char> msc)
 string solution(string m, vector<string> musicinfos) {
 	string answer = "(None)";
 	map<string, char> msc;
-	vector<pair<int, string>> v;
 
 	msc["C#"] = 'H';
 	msc["D#"] = 'I';

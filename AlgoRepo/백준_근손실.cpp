@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int kit[50];
 bool check[50];
 

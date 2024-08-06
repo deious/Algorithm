@@ -48,6 +48,7 @@ int main()
 
 	ans++;
 	cin >> s;
+	check[s] = true;
 	Calculate(s);
 
 	cout << ans << "\n";
